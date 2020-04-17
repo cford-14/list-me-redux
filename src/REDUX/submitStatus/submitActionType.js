@@ -1,0 +1,3 @@
+export const sc = {
+    CHANGE_ADD_SUBMIT_STATUS: "CHANGE_ADD_SUBMIT_STATUS"
+}
