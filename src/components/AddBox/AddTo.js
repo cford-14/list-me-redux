@@ -1,8 +1,8 @@
 import React from 'react';
 import '../../App.css';
-import AddItem from './addItemForm';
+//import AddItem from './addItemForm';
 import { connect } from 'react-redux';
-import { changeAddSubmitStatus } from '../../REDUX/submitStatus/submitActionCreator';
+//import { changeAddSubmitStatus } from '../../REDUX/submitStatus/submitActionCreator';
 import { addItem } from '../../REDUX/List/listActionCreators';
 
 
@@ -31,13 +31,15 @@ class AddTo extends React.Component  {
         const value = e.target.value;
         const name = e.target.name;
         const selectedOption = e.target.selectedOption;
+        let newStoreValue = this.state.stores.indexOf(value) === -1 ? this.state.stores.concat(value) : this.state.stores
         this.setState({
-                [name]: name === "stores" ? this.state.stores.concat(value) : value
+                [name]: name === "stores" ? newStoreValue : value
             })
         
         console.log(this.state.item)
     }
-    handleSubmit() {
+    handleSubmit(e) {
+        e.preventDefault();
         if (this.state.item.length > 0 && this.state.stores.length > 0) {
             this.props.addItem(
                 this.state.item, 
@@ -46,15 +48,6 @@ class AddTo extends React.Component  {
                 this.state.notes, 
                 this.state.stores
             );
-            this.setState({
-                item: '',
-                quantity: null,
-                units: '',
-                notes: '',
-                stores: [],
-                input: ''
-            })
-
         } else {
             if (this.state.item.length === 0) {
                 alert("Please enter an item name.")
@@ -62,6 +55,22 @@ class AddTo extends React.Component  {
                 alert("Please select a list for your item.")
             }
         }
+        this.setState({
+            item: '',
+            quantity: null,
+            units: '',
+            notes: '',
+            stores: []
+        })
+        
+        /*this.setState({
+            item: '',
+            quantity: null,
+            units: '',
+            notes: '',
+            stores: [],
+            input: ''
+        })*/
         //this.setState({fieldCount: 1});
 
         //call dispatch on each add item
@@ -71,6 +80,8 @@ class AddTo extends React.Component  {
         //pass 
     }
     render() {
+        
+        console.log(this.state)
         const form=[];
         /*for (let i=0; i< this.state.fieldCount; i++) {
             form.push( <AddItem submitClicked={this.state.submitClicked}/>)
@@ -88,7 +99,7 @@ class AddTo extends React.Component  {
                             type="text" 
                             name="item" 
                             placeholder="item name" 
-                            value={this.state.input} 
+                            value={this.state.item} 
                             onChange={e=>this.handleChange(e)}/>
                         {/*<input id="item" 
                             type="text" 
@@ -100,19 +111,19 @@ class AddTo extends React.Component  {
                             type="number" 
                             name="quantity" 
                             placeholder="#" 
-                            value={this.state.input} 
+                            value={this.state.quantity} 
                             onChange={e=>this.handleChange(e)}/>
                         <input id="units" 
                             type="text" 
                             name="units" 
                             placeholder="units" 
-                            value={this.state.input} 
+                            value={this.state.units} 
                             onChange={e=>this.handleChange(e)}/>
                     </form>
                     <textarea 
                         name="notes" 
                         placeholder="notes"
-                        value={this.state.input} 
+                        value={this.state.notes} 
                         onChange={e=>this.handleChange(e)}>
                     </textarea>
                     <select name="stores" 
@@ -127,7 +138,7 @@ class AddTo extends React.Component  {
                 <button class="addField" type="button" onClick={(e) => this.handleClick()}>add fields</button>
             </div>*/}
             <div>
-                <button className="submit" type="submit" onClick={e=>this.handleSubmit()}>submit</button>
+                <button className="submit" type="submit" onClick={e=>this.handleSubmit(e)}>submit</button>
             </div>
             
         </div>
@@ -136,10 +147,9 @@ class AddTo extends React.Component  {
 };
 
 const mapStateToProps = (state) => {
-    console.log(state.submitStatus);
     return{
-        masterList: state.masterList,
-        submitStatus: state.submitStatus.addSubmitStatus,
+        masterList: state.masterList.masterList,
+        //submitStatus: state.submitStatus.addSubmitStatus,
         shopsList: state.shopsList.shopsList
     }
 };

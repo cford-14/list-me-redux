@@ -35,7 +35,7 @@ export const removeChecked = () => {
     }
 };
 
-export const deleteList = shop => {
+export const deleteShopFromList = shop => {
     return {
         type: constants.DELETE_LIST, 
         shop

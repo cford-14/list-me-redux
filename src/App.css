@@ -187,7 +187,7 @@ form, textarea, select, .addField {
 
 
 
-.submit, .addField {
+.submit, .addField, .removeChecked {
   background-color:#32213A;
   color:#F7F3E3;
   font-size: .75rem;

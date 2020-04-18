@@ -2,6 +2,7 @@ import React from 'react';
 import '../../App.css';
 import { Invite, Contact, SelectSingleList } from './fields';
 import { connect } from 'react-redux';
+import { addShareData } from '../../REDUX/contact/contactActionCreators';
 
 class Share extends React.Component {
     constructor(props) {
@@ -11,7 +12,7 @@ class Share extends React.Component {
         this.handleSubmit=this.handleSubmit.bind(this);
         this.state={
             fieldCount: 1,
-            shop: 'null',
+            selectList: 'null',
             shareName: '',
             shareEmail: '',
             shareMobile: '',
@@ -35,16 +36,16 @@ class Share extends React.Component {
         
     }
     handleSubmit() {
-        if (this.state.shop !== "null" && (this.state.shareEmail.length > 0 || this.state.shareMobile.length > 0)) {
-            this.props.addShare(
-                this.state.shop, 
+        if (this.state.selectList !== "null" && (this.state.shareEmail.length > 0 || this.state.shareMobile.length > 0)) {
+            this.props.addShareData(
+                this.state.selectList, 
                 this.state.shareName, 
                 this.state.shareEmail, 
                 this.state.shareMobile, 
                 this.state.shareStatus
             );
             this.setState({
-                shop: 'null',
+                selectList: 'null',
                 shareName: '',
                 shareEmail: '',
                 shareMobile: '',
@@ -54,7 +55,7 @@ class Share extends React.Component {
         } else {
             if (this.state.selectedShop === "null") {
                 alert("Please select a list to share.")
-            } if (this.state.shareEmail.length > 0 || this.state.shareMobile.length > 0) {
+            } if (this.state.shareEmail.length === 0 || this.state.shareMobile.length === 0) {
                 alert("Please enter an email address or phone number.")
             }
         }
@@ -150,4 +151,10 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(Share)
+const mapDispatchToProps = dispatch => {
+    return{
+        addShareData: (selectList, shareName, shareEmail, shareMobile, shareStatus) => dispatch(addShareData(selectList, shareName, shareEmail, shareMobile, shareStatus))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Share)

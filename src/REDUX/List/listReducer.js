@@ -7,9 +7,9 @@ export default (state=listInitialState, action) => {
     switch (action.type) {
         case constants.ADD_ITEM:
             console.log(state);
-            return Object.assign([], state, (
-                [ 
-                    ...state,  
+            return Object.assign({}, state, {
+                masterList: [ 
+                    ...state.masterList,  
                         {
                             itemNumber: action.itemNumber,
                             checked: false,
@@ -20,82 +20,65 @@ export default (state=listInitialState, action) => {
                             stores: action.stores
                         }
                     ]
-                )
+                }
             )
         case constants.TOGGLE_CHECK:
-            return Object.assign({}, state, {
-                masterList: state.masterList.map((listItem) => {
-                    return listItem.id === action.id ?
-                    Object.assign({}, {checked: !listItem.checked}) : listItem
+            return Object.assign({}, state, {                
+                masterList: state.masterList.map(listItem => listItem.itemNumber === action.itemNumber ? {...listItem, checked: !listItem.checked} : listItem) //?
                 })
-            })
         case constants.REMOVE_CHECKED:
             return Object.assign({}, state, {
                 masterList: state.masterList.filter((listItem)=> {
-                    return listItem.checked === true 
+                    return listItem.checked === false 
                 })
             })
         case constants.DELETE_LIST:
+            console.log("AAAAAAAAAAAA!")
             return Object.assign({}, state, {
-                masterList: state.masterlist.map((listItem)=> {
-                    listItem.stores.filter(shop => {
-                        return shop !== action.shop
-                    })
-                    return listItem.stores.length > 0 
+                masterList: state.masterList.map(listItem => {
+                    return(
+                        {
+                            ...listItem, 
+                            stores: listItem.stores.filter(shop=> shop !== action.shop)
+                        }
+                    )
+
+                   /*     console.log(listItem.stores.filter(shop => shop !== "Your"))
+
+                    listItem.stores.indexOf(action.shop) !== -1 ? listItem :{
+                            ...listItem,
+                            
+                        }*/
+                    //listItem.stores.filter(shop => shop !== action.shop)
                 })
             })
+                
         default:
             return state 
     }
 }
 
 /*
-//item reducer
-export const item = (state = {}, action) => {
-    switch(action.type) {
-        case constants.TOGGLE_CHECK:
-            return (
-                state.masterList.id !== action.id ? state : { ...state, checked: false}
-            )
-        case constants.ADD_ITEM:
-            return {
-                id: action.id,
-                checked: false,
-                item: action.item,
-                quantity: action.quantity,
-                units: action.units,
-                notes: action.notes,
-                stores: action.stores
-            }
-        case constants.DELETE_LIST:
-            let newStores = state.masterList.stores.filter(store => store !== action.store)
-            if (newStores.length > 0) {
-                return{
-                    ...state,
-                    stores: newStores
-                }
-            }
-        default:
-            return state
-    }
-        
-};
 
-
-//items reducer
-export const items =(state=[], action) => {
-    switch(action.type) {
-        case constants.TOGGLE_CHECK:
-            return state.map(i=>item(i, action))
-        case constants.ADD_ITEM:
-            return [...state, item({}, action)]
-        case constants.DELETE_CHECKED:
-            const checkStatus = item.checked;
-            return state.filter(i => item.checked === !checkStatus)       
-        case constants.DELETE_LIST:
-            return state.map(i=>item(i, action))
-        default:
-            return state
+map>>
+    {
+    li.item
+    li.quant
+    li.note
+    li.stores
     }
-};
+    {
+    li.item
+    li.quant
+    li.note
+    li.stores
+    }
+[
+    {
+        itmeNumber: 100
+        checked: false
+        ...
+    },
+    {}
+]
 */

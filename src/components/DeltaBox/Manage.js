@@ -1,13 +1,34 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import '../../App.css';
-import { removeShop } from '../../REDUX/shops/shopsActionCreators';
+import { deleteShopFromList } from '../../REDUX/List/listActionCreators';
+import { deleteShopFromShops } from '../../REDUX/shops/shopsActionCreators';
 
 class Manage extends React.Component {
     constructor(props){
-        super(props)
+        super(props);
+        this.handleDelete=this.handleDelete.bind(this);
+        this.handleChange=this.handleChange.bind(this);
+        this.state = {
+            shopToDelete: ''
+        }
     }
+    handleChange(e){
+        const value = e.target.value;
+        this.setState({
+                shopToDelete: value
+            })
+    }
+    handleDelete() {
+        console.log("sefhslflsf");
+        this.props.deleteShopFromList(this.state.shopToDelete);
+        this.props.deleteShopFromShops(this.state.shopToDelete);
+        this.setState({shopToDelete: 'deleted'})
+        
+    }
+    
     render(){
+        console.log(this.state.shopToDelete);
         return(    
             <div className="Box" >
                 <div className="boxTitle">
@@ -18,7 +39,7 @@ class Manage extends React.Component {
                     <form>
                         <label for="deleteList">select list to delete:<br/></label>
                         
-                        <select id="deleteList" name='deleteList' className='selectBox'>
+                        <select id="deleteList" name='deleteList' className='selectBox' onChange={e=> this.handleChange(e)}>
                             <option value='null'>select list</option>
                             {this.props.shopsList.map(shop => {
                                 if (shop !== "Master")
@@ -27,8 +48,8 @@ class Manage extends React.Component {
                                 )
                             })}
                         </select>
-                        <button className="submit" type="submit">submit</button>
                     </form>
+                    <button className="submit" type="submit" onClick={e=>this.handleDelete()}>delete</button>
                 </div>
             </div>
         );
@@ -44,7 +65,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
     return{
-        removeShop: (oldShop) => dispatch(removeShop(oldShop))
+        deleteShopFromList: (shop) => dispatch(deleteShopFromList(shop)),
+        deleteShopFromShops: (shop) => dispatch(deleteShopFromShops(shop))
     }
 };
 

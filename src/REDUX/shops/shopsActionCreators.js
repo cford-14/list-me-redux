@@ -7,9 +7,10 @@ export const addShop = shop => {
     }
 };
 
-export const removeShop = shop => {
+export const deleteShopFromShops = shop => {
     return {
         type: shopsC.DELETE_SHOP,
         shop
     }
 };
+

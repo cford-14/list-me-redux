@@ -13,17 +13,14 @@ state =
     shopToView: shop: blank/shop/shop
     submitStatus: addSubmitStatus: true/false
     shopsList: shopsList: []
-    
+    shareData: [{},{}]  //contact
 
 */
 
 
 /*
 NEXT:
-manage list --> delete on submit
-Check boxes
-contacts and permissions
-
+AddTo: indicate that a list is checked 
 middleware
 share???
 firebase

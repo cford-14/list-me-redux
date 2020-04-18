@@ -1,25 +1,27 @@
-export const listInitialState = (
-    [ 
+export const listInitialState = {
+    masterList: [ 
         {
             "itemNumber": 10000,
             "checked": false,
-            "item": "item name",
+            "item": "",
             "quantity": 1,
-            "units": "boxes",
-            "notes": "always optional",
-            "stores": ["Your", "Stores", "Here"]
+            "units": "",
+            "notes": "",
+            "stores": []
         },
         {
-            "itemNumber": 10000,
+            "itemNumber": 11000,
             "checked": false,
-            "item": "item name",
+            "item": "",
             "quantity": 1,
-            "units": "boxes",
-            "notes": "always optional",
-            "stores": ["Your", "Stores", "Here"]
+            "units": "",
+            "notes": "",
+            "stores": []
         }
     ]
-)
+}
+
+
 /*this.state = { masterList: [
                                 item1, 
                                 item2, 
