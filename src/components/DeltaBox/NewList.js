@@ -13,36 +13,39 @@ class NewList extends React.Component {
             newShop: ''
         }
     }
+
     handleClick() {
         let clickCount = this.state.fieldCount;
         if (clickCount < 3) {
             this.setState({fieldCount: clickCount+1})
         }           
     }
+
     handleChange(e){
         const value = e.target.value;
         this.setState({
                 newShop: value
             })
-        
-        console.log(this.state.newShop)
     }
+
     handleSubmit() {
-        if (this.state.newShop.length > 0) {
+        if (this.state.newShop.length > 0 && this.props.shopsList.length <= 10) {
             this.props.addShop(this.state.newShop);
             this.setState({
                 newShop: ''
             })
-        } else {
+        } else if(this.state.newShop.length <= 0) {
             alert("Please enter a name for your new list.")
+        } else {
+            alert("There is a limit of 10 lists per user.")
         }
     }
 
     render(){
-        let form=[];
+        /*let form=[];
         for (let i=0; i< this.state.fieldCount; i++) {
             form.push( <Invite />)
-        }
+        }*/
         return(
             <div className="Box">
                 <div className="boxTitle">
@@ -57,13 +60,6 @@ class NewList extends React.Component {
                         value={this.state.newShop}
                         onChange={e=>this.handleChange(e)}/>
                     </form>
-                </div>
-                <div >
-                    <p className="subtitle">invite contributors</p>
-                </div>
-                <div /*style={this.state.style1}*/ className='formFields'>
-                    {form}
-                    <button className="addField" type="button" onClick={(e) => this.handleClick('one')}>Add Fields</button>
                 </div>
                 <div>
                     <button className="submit" type="submit" onClick={e=>this.handleSubmit()}>submit</button>
@@ -84,4 +80,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(NewList)
+export default connect(mapStateToProps, mapDispatchToProps)(NewList)

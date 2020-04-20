@@ -1,5 +1,3 @@
-
-//REDUCERS
 import { constants } from './listActionTypes';
 import { listInitialState } from  './listInitialState';
 
@@ -42,14 +40,6 @@ export default (state=listInitialState, action) => {
                             stores: listItem.stores.filter(shop=> shop !== action.shop)
                         }
                     )
-
-                   /*     console.log(listItem.stores.filter(shop => shop !== "Your"))
-
-                    listItem.stores.indexOf(action.shop) !== -1 ? listItem :{
-                            ...listItem,
-                            
-                        }*/
-                    //listItem.stores.filter(shop => shop !== action.shop)
                 })
             })
                 
@@ -58,27 +48,3 @@ export default (state=listInitialState, action) => {
     }
 }
 
-/*
-
-map>>
-    {
-    li.item
-    li.quant
-    li.note
-    li.stores
-    }
-    {
-    li.item
-    li.quant
-    li.note
-    li.stores
-    }
-[
-    {
-        itmeNumber: 100
-        checked: false
-        ...
-    },
-    {}
-]
-*/

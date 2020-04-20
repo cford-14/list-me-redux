@@ -5,7 +5,10 @@ export default (state=shopsInitialState, action) => {
     switch (action.type) {
         case shopsC.ADD_NEW_SHOP:
             return Object.assign({}, state, {
-                shopsList: state.shopsList.concat(action.shop)
+                shopsList: state.shopsList.concat(action.shop),
+                checkList: {...state.checkList, 
+                            [action.shop]: false
+                        }
             }) 
         case shopsC.DELETE_SHOP:
             return Object.assign({}, state, {
@@ -16,12 +19,3 @@ export default (state=shopsInitialState, action) => {
     }
 };
 
-/* 
-map state
-    if listItem.
-
-
-
-newstate = state.map(listItem => listitem.itemNumber === action.itemNumber ? {...listItem, checked: !listItem.checked} : listItem)
-
-*/

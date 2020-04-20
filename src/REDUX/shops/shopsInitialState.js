@@ -1,3 +1,4 @@
 export const shopsInitialState = {
-    shopsList: ["Master"]
+    shopsList: ["Master"],
+    checkList: {}
 };

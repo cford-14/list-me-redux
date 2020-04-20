@@ -2,13 +2,9 @@
 //ACTION TYPES
 
 export const constants = {
-    //list actions
     ADD_ITEM: "ADD_ITEM", 
-    EDIT_ITEM: "EDIT_ITEM",
     TOGGLE_CHECK: "TOGGLE_CHECK",
     REMOVE_CHECKED: "REMOVE_CHECKED",
-    DELETE_LIST: "DELETE_LIST",
-    VIEW_BY_STORE: "VIEW_BY_STORE"
-    //SORT_BY_ALPHA: "SORT_BY_ALPHA", 
+    DELETE_LIST: "DELETE_LIST", 
 }
 

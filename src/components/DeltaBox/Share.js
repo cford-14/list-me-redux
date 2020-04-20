@@ -17,24 +17,25 @@ class Share extends React.Component {
             shareEmail: '',
             shareMobile: '',
             shareStatus: 'view'
-
         }
     }
+
     handleClick() {
         let clickCount = this.state.fieldCount;
         if (clickCount < 3) {
             this.setState({fieldCount: clickCount+1})
         }
     }
+
     handleChange(e){
         const value = e.target.value;
         const name = e.target.name;
         this.setState({
                 [name]: value
         });
-        console.log(this.state)
-        
+        console.log(this.state)   
     }
+
     handleSubmit() {
         if (this.state.selectList !== "null" && (this.state.shareEmail.length > 0 || this.state.shareMobile.length > 0)) {
             this.props.addShareData(
@@ -60,6 +61,7 @@ class Share extends React.Component {
             }
         }
     }
+
     render() {
         /*const form=[];
         for (let i=0; i < this.state.fieldCount; i++) {
@@ -87,7 +89,7 @@ class Share extends React.Component {
                         </select>
                     </form>
                 </div>
-                <div /*style={this.state.style1}*/ className='formFields'>
+                <div className='formFields'>
                     {/*{form}
                     <button className="addField" type="button" onClick={(e) => this.handleClick()}>add fields</button>*/}
                     <div className="form">
@@ -95,6 +97,7 @@ class Share extends React.Component {
                             <input id="inviteName" 
                                     type="text" 
                                     name="shareName" 
+                                    value={this.state.shareName}
                                     placeholder="friend's name" 
                                     onChange={e=>this.handleChange(e)}/>
                         </form>
@@ -102,6 +105,7 @@ class Share extends React.Component {
                             <input id="inviteEmail" 
                                     type="text" 
                                     name="shareEmail" 
+                                    value={this.state.shareEmail}
                                     placeholder="email address" 
                                     onChange={e=>this.handleChange(e)}/>
                         </form>
@@ -109,7 +113,8 @@ class Share extends React.Component {
                         <form>
                             <input id="shareMobile" 
                                     type="text" 
-                                    name="shareMobile" 
+                                    name="shareMobile"
+                                    value={this.state.shareMobile} 
                                     placeholder="mobile number" 
                                     onChange={e=>this.handleChange(e)}/>
                         </form>

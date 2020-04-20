@@ -1,6 +1,3 @@
-
-//CREATE STORE
-
 import { createStore } from 'redux';
 import rootReducer from './rootReducer'
 
@@ -9,20 +6,19 @@ export const store = createStore(rootReducer);
 
 /*
 state = 
-    masterList: [ {}, {}, {}... ],
-    shopToView: shop: blank/shop/shop
-    submitStatus: addSubmitStatus: true/false
-    shopsList: shopsList: []
-    shareData: [{},{}]  //contact
+    shareData: [{},{}],  //REDUX/contact
+    masterList: [ {itemNumber, checked, item, quantity, units, notes, stores}, {}, {}... ], //REDUC/List
+    shopsList: shopsList: [],  //REDUX/shops
+                checkList,  
+    submitStatus: addSubmitStatus: true/false //REDUX/submitStatus
+    shopToView: shop: "", //REDUX/View
 
 */
 
 
 /*
 NEXT:
-AddTo: indicate that a list is checked 
 middleware
-share???
 firebase
 
 
@@ -34,7 +30,7 @@ work on submit from another page for AddTo and CreateNew
             1) deploy ADD_ITEM
             2) clear fields by resetting local state
             3) change submitStatus to false
-View --> change state when checked
+add immages
 
 */
 

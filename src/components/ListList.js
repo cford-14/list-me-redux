@@ -15,8 +15,8 @@ class ListList extends React.Component {
         console.log('New URL', this.props.history.location.pathname);
         })
     }
+
     handleClick(e, value) {
-//change view state here
         e.preventDefault();
         this.props.changeShopToView(value)
     }

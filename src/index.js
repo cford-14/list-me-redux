@@ -20,7 +20,7 @@ const routing = (
       <div className="App">
         <Banner />
         <div className="nav">
-          <Link to="/" className="menuOption"><h3>New List</h3></Link>
+          <Link to="/" className="menuOption"><h3>Create List</h3></Link>
           <Link to="/manage" className="menuOption"><h3>Manage</h3></Link>
           <Link to="/share" className="menuOption"><h3>Share Lists</h3></Link>      
         </div>

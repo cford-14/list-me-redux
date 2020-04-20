@@ -11,15 +11,18 @@ class View extends React.Component {
         this.toggleCheck=this.toggleCheck.bind(this);
         this.removeChecked=this.removeChecked.bind(this)
     }
+
     toggleCheck(e) {
         const itemNumber = Number(e.target.name);
         console.log(itemNumber);
         this.props.toggleCheck(itemNumber)
 
     }
+
     removeChecked(e) {
         this.props.removeChecked()
     }
+    
     render() {
         console.log(this.props.masterList.map(line => line));
         if (this.props.shopToView === "Master") {

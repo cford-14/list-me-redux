@@ -13,5 +13,3 @@ export default (state=viewInitialState, action) => {
 }
 
 
-/* onClick -> router <Link to="/view" dispatch CHANGE_SHOP_TO_VIEW action.shop = 
-*/

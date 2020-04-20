@@ -13,18 +13,18 @@ class Manage extends React.Component {
             shopToDelete: ''
         }
     }
+
     handleChange(e){
         const value = e.target.value;
         this.setState({
                 shopToDelete: value
             })
     }
+
     handleDelete() {
-        console.log("sefhslflsf");
         this.props.deleteShopFromList(this.state.shopToDelete);
         this.props.deleteShopFromShops(this.state.shopToDelete);
-        this.setState({shopToDelete: 'deleted'})
-        
+        this.setState({shopToDelete: ''})  
     }
     
     render(){
@@ -54,7 +54,7 @@ class Manage extends React.Component {
             </div>
         );
     }
-}
+};
 
 const mapStateToProps = (state) => {
     console.log(state)
