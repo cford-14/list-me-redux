@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/list-me-redux/static/css/main.dff4aaca.chunk.css",
+    "main.js": "/list-me-redux/static/js/main.2347233f.chunk.js",
+    "main.js.map": "/list-me-redux/static/js/main.2347233f.chunk.js.map",
+    "runtime-main.js": "/list-me-redux/static/js/runtime-main.a3e51c85.js",
+    "runtime-main.js.map": "/list-me-redux/static/js/runtime-main.a3e51c85.js.map",
+    "static/js/2.bf141a80.chunk.js": "/list-me-redux/static/js/2.bf141a80.chunk.js",
+    "static/js/2.bf141a80.chunk.js.map": "/list-me-redux/static/js/2.bf141a80.chunk.js.map",
+    "index.html": "/list-me-redux/index.html",
+    "precache-manifest.d3e3f38528102dbb1adc817fc6db8f3b.js": "/list-me-redux/precache-manifest.d3e3f38528102dbb1adc817fc6db8f3b.js",
+    "service-worker.js": "/list-me-redux/service-worker.js",
+    "static/css/main.dff4aaca.chunk.css.map": "/list-me-redux/static/css/main.dff4aaca.chunk.css.map",
+    "static/js/2.bf141a80.chunk.js.LICENSE.txt": "/list-me-redux/static/js/2.bf141a80.chunk.js.LICENSE.txt",
+    "static/media/storefront.jpg": "/list-me-redux/static/media/storefront.b6c042b7.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a3e51c85.js",
+    "static/js/2.bf141a80.chunk.js",
+    "static/css/main.dff4aaca.chunk.css",
+    "static/js/main.2347233f.chunk.js"
+  ]
+}
